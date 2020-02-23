@@ -7,24 +7,21 @@ import re
 import sys
 
 # if __name__ == '__main__':
-def main():
+
+if __name__ == '__main__':
     arr = []
     total = 0
-    print('halp')
 
     for _ in range(6):
         arr.append(list(map(int, input().rstrip().split())))
-    for l in range(4):
-        print(f'line: {l+1}: {arr[l]}')
-        for i in range(3):
-            print(f'{i+1}: {i}')
-            if arr[l][i] * arr[l][i+1] * arr[l][i+2]:
-                print('possible hourglass')
-                if arr[l+1][i+1]:
-                    if arr[l+2][i] * arr[l+2][i+1] * arr[l+2][i+2]:
-                        total = arr[l][i] + arr[l][i+1] + arr[l][i+2]
-                        total += arr[l+1][i+1]
-                        total += arr[l+2][i] + arr[l+2][i+1] + arr[l+2][i+2]
+    for r in range(4):  # hour glass must have 3 rows, so don't look at the last 2
+        for i in range(3):  # stop after the last 3-digits on a row
+            if arr[r][i] * arr[r][i+1] * arr[r][i+2]:  # are all non-zero?
+                # possible hourglass
+                if arr[r+1][i+1]:
+                    if arr[r+2][i] * arr[r+2][i+1] * arr[r+2][i+2]:
+                        # we have an hour glass, sum the components
+                        total = arr[r][i] + arr[r][i+1] + arr[r][i+2]
+                        total += arr[r+1][i+1]
+                        total += arr[r+2][i] + arr[r+2][i+1] + arr[r+2][i+2]
     print(total)
-
-main()
