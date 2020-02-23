@@ -18,7 +18,7 @@ if __name__ == '__main__':
             total = arr[r][i] + arr[r][i+1] + arr[r][i+2]
             total += arr[r+1][i+1]
             total += arr[r+2][i] + arr[r+2][i+1] + arr[r+2][i+2]
-            if max_sum:
+            if max_sum is not None:
                 max_sum = max(max_sum, total)
             else:
                 max_sum = total
