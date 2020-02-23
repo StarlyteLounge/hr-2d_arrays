@@ -6,12 +6,10 @@ import random
 import re
 import sys
 
-# if __name__ == '__main__':
-
 if __name__ == '__main__':
     arr = []
     total = 0
-    max_sum = 0
+    max_sum = None
 
     for _ in range(6):
         arr.append(list(map(int, input().rstrip().split())))
@@ -20,5 +18,8 @@ if __name__ == '__main__':
             total = arr[r][i] + arr[r][i+1] + arr[r][i+2]
             total += arr[r+1][i+1]
             total += arr[r+2][i] + arr[r+2][i+1] + arr[r+2][i+2]
-            max_sum = max(max_sum, total)
+            if max_sum:
+                max_sum = max(max_sum, total)
+            else:
+                max_sum = total
     print(max_sum)
